@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Discover – Spark</title>
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-page="discover">
+  <header id="site-header"></header>
+  <main>
+    <section class="gate container" data-gate hidden>
+      <div class="glass gate-card"><h2>Log in to discover people</h2><p class="muted" style="margin:8px 0 16px">Browse profiles, like and request to meet.</p>
+        <button class="btn btn-primary" data-open="login">Login</button><button class="btn btn-ghost" data-open="signup">Sign Up</button></div>
+    </section>
+
+    <div class="container" data-app>
+      <div class="page-head"><h1>Discover</h1><p class="muted">Like, pass or request to meet. <span id="dCount"></span></p></div>
+      <div class="toolbar glass">
+        <div style="flex:1;min-width:260px"><div class="label-like">Show me</div><div class="chips" id="dChips" style="margin:0"></div></div>
+        <label>Min age<input type="number" id="dMin" value="18" min="18" max="99"></label>
+        <label>Max age<input type="number" id="dMax" value="80" min="18" max="99"></label>
+        <label>Sort by<select id="dSort"><option value="near">Nearest</option><option value="age">Youngest</option><option value="new">Newest</option></select></label>
+        <label class="check" style="align-items:center;margin:0 6px 8px"><span class="switch"><input type="checkbox" id="dAvail" checked><i></i></span><span>Available only</span></label>
+      </div>
+      <div class="grid" id="dGrid"></div>
+      <div class="empty" id="dEmpty" hidden><h3>No one here right now</h3><p>Try widening the filters or include unavailable members.</p></div>
+    </div>
+  </main>
+  <footer id="site-footer"></footer>
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/map.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+/* ==========================================================
+   Spark – responsive rules (desktop first, collapses to mobile)
+   ========================================================== */
+@media (max-width:1000px){
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .two-col{grid-template-columns:1fr}
+  .adm{grid-template-columns:1fr}
+  .adm-side{position:fixed;z-index:200;left:0;top:0;width:260px;transform:translateX(-102%);transition:transform .3s;background:var(--bg2)}
+  .adm-side.open{transform:none;box-shadow:var(--shadow)}
+  .adm-burger{display:grid}
+  .adm-main{padding:0 16px 40px}
+}
+
+@media (max-width:860px){
+  .burger{display:block}
+  .nav{flex-wrap:wrap;height:auto;min-height:var(--nav-h);padding-top:10px;padding-bottom:10px;row-gap:8px}
+  .nav-links{display:none;order:5;width:100%;flex-direction:column;margin:0;padding-bottom:6px}
+  .nav-links.open{display:flex;animation:fadeUp .2s ease}
+  .nav-right{order:4;margin-left:0;width:100%;justify-content:flex-end}
+  .nav-right .btn{flex:1}
+  .map-hero{height:calc(100vh - 120px);min-height:520px}
+  .panel{top:auto;bottom:0;left:0;right:0;width:auto;max-height:52%;border-radius:24px 24px 0 0}
+  .hero-card{left:50%;top:auto;bottom:16px;transform:translateX(-50%);width:94%;padding:24px 22px;animation-name:fadeIn}
+  .map-ctrl{bottom:auto;top:14px;right:12px}
+  .user-card{bottom:auto;top:14px}
+  .view-grid{grid-template-columns:1fr}
+}
+
+@media (max-width:600px){
+  .two{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .section{padding:46px 0}
+  .modal-card{padding:26px 20px;border-radius:22px}
+  .toolbar label{min-width:calc(50% - 10px);flex:1}
+  .p-head{flex-direction:column;align-items:center;text-align:center;margin-top:-64px}
+  .p-cover{height:130px}
+  .hero-card h1{font-size:1.7rem}
+  .toast-wrap{left:12px;right:12px}
+  .toast{max-width:none}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px}
+  .pcard .over p{display:none}
+  .adm-top h1{font-size:1.25rem}
+  .kv{grid-template-columns:100px 1fr}
+}
+
+@media (hover:none){
+  .pcard:hover,.fcard:hover,.step:hover,.stat:hover,.scard:hover{transform:none}
+}

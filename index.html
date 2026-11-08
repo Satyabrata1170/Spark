@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spark – Meet people near you</title>
+  <meta name="description" content="Spark is a location-aware dating and meetup app: see who is available nearby on a live map, then book a meeting.">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-page="home">
+  <header id="site-header"></header>
+
+  <main>
+    <!-- Full-screen live map (Uber style) -->
+    <section class="map-hero" aria-label="Live map">
+      <div id="map" class="map"></div>
+
+      <div class="map-ctrl">
+        <button id="zoomIn" aria-label="Zoom in">+</button>
+        <button id="zoomOut" aria-label="Zoom out">−</button>
+        <button id="locateMe" aria-label="My location">◎</button>
+      </div>
+
+      <!-- Visitors (logged out) -->
+      <div class="hero-card glass" id="heroCard" hidden>
+        <h1>Meet people <em>right around you</em></h1>
+        <p>See who is available nearby on a live map, send a meeting request and plan a real-world date – all on your terms.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" data-open="signup">Get started – it's free</button>
+          <button class="btn btn-ghost" data-open="login">Login</button>
+        </div>
+        <div class="hero-badges"><span>🔒 Approximate locations only</span><span>✔ 18+ community</span><span>🟢 Go Available / Unavailable anytime</span></div>
+      </div>
+
+      <!-- Members (logged in) -->
+      <aside class="panel glass" id="nearbyPanel" hidden aria-label="People near you">
+        <div class="panel-head"><h2>People near you</h2><span class="count" id="nearCount">0</span></div>
+        <div class="status-switch" id="statusSwitch">
+          <button data-status="available"><span class="dot available"></span>Available</button>
+          <button data-status="unavailable"><span class="dot unavailable"></span>Unavailable</button>
+        </div>
+        <p class="tiny muted" id="visNote" style="margin-bottom:12px"></p>
+        <div class="chips" id="homeChips"></div>
+        <div class="filter-row">
+          <label>Age from – to
+            <span style="display:flex;gap:6px"><input type="number" id="fMin" value="18" min="18" max="99"><input type="number" id="fMax" value="60" min="18" max="99"></span>
+          </label>
+          <label>Within
+            <select id="fRadius"><option value="2">2 km</option><option value="5">5 km</option><option value="10">10 km</option><option value="25" selected>25 km</option><option value="100">100 km</option></select>
+          </label>
+        </div>
+        <ul class="near-list" id="nearList"></ul>
+      </aside>
+
+      <div class="user-card glass" id="userCard" hidden></div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal"><h2>Dating, but <span style="background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent">on the map</span></h2>
+          <p class="muted">Part Uber, part Bumble, part Teams – built around real people, real places and real consent.</p></div>
+        <div class="cards">
+          <article class="fcard glass reveal"><div class="ico">🗺️</div><h3>Live nearby map</h3><p class="muted">Profiles appear as floating markers – a friendly woman or man avatar head if no photo is added.</p></article>
+          <article class="fcard glass reveal"><div class="ico">🟢</div><h3>Available / Unavailable</h3><p class="muted">Teams-style status. Only people who set themselves Available are visible to others.</p></article>
+          <article class="fcard glass reveal"><div class="ico">📅</div><h3>Smart booking</h3><p class="muted">Choose who you'd like – and who you'd rather not – with age and distance filters, then request a session.</p></article>
+          <article class="fcard glass reveal"><div class="ico">🛡️</div><h3>Privacy first</h3><p class="muted">Approximate location, 18+ only, mutual acceptance for every meeting request.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="video-band">
+      <video autoplay muted loop playsinline aria-hidden="true">
+        <source src="assets/videos/background.mp4" type="video/mp4" onerror="this.parentElement.style.display='none'">
+      </video>
+      <div class="container">
+        <div class="section-head reveal"><h2>How it works</h2><p>Three steps from "hello" to "see you at 7".</p></div>
+        <div class="steps">
+          <div class="step glass reveal"><b>1</b><h3>Create your profile</h3><p class="muted">Tell us your gender, age and what you're into. Takes a minute.</p></div>
+          <div class="step glass reveal"><b>2</b><h3>Go Available</h3><p class="muted">Allow location, flip your status to Available and see who's around.</p></div>
+          <div class="step glass reveal"><b>3</b><h3>Book a session</h3><p class="muted">Send a meeting request. They accept – you meet somewhere public.</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/map.js"></script>
+</body>
+</html>

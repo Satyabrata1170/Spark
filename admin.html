@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Panel – Spark</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-page="admin">
+  <div class="adm">
+    <aside class="adm-side" id="admSide">
+      <a class="brand" href="admin.html" id="admBrand"></a>
+      <button class="nav-i on" data-sec="dashboard">📊 Dashboard</button>
+      <button class="nav-i" data-sec="users">👥 User Management</button>
+      <button class="nav-i" data-sec="bookings">📅 Bookings</button>
+      <button class="nav-i" data-sec="reports">🚩 Reports</button>
+      <button class="nav-i" data-sec="settings">⚙️ Settings</button>
+      <div class="spacer"></div>
+      <button class="nav-i" id="admLogout">🚪 Logout</button>
+    </aside>
+
+    <div class="adm-main">
+      <header class="adm-top">
+        <button class="icon-btn adm-burger" id="admBurger" aria-label="Menu">☰</button>
+        <h1 id="admTitle">Dashboard</h1>
+        <button class="icon-btn" id="admTheme" title="Toggle dark mode" aria-label="Toggle dark mode">🌓</button>
+        <span class="avatar-btn" style="cursor:default"><span class="avatar-letter">A</span></span>
+      </header>
+
+      <!-- DASHBOARD -->
+      <section class="adm-sec on" id="sec-dashboard">
+        <div class="stat-grid" id="statCards"></div>
+        <h2 style="margin:6px 0 12px">Analytics</h2>
+        <div class="stat-grid" id="anCards"></div>
+        <div class="two-col">
+          <div class="glass box"><h2>New registrations · last 7 days</h2><div class="bars" id="regBars"></div></div>
+          <div class="glass box"><h2>Gender split</h2><div class="split" id="genderSplit"></div><p class="muted tiny" id="genderLegend"></p>
+            <h2 style="margin-top:20px">Booking status</h2><div class="split" id="bkSplit"></div><p class="muted tiny" id="bkLegend"></p></div>
+        </div>
+      </section>
+
+      <!-- USERS -->
+      <section class="adm-sec" id="sec-users">
+        <div class="toolbar-lite">
+          <input type="search" id="uSearch" placeholder="Search name, email, city…" class="grow">
+          <select id="uFilter"><option value="all">All statuses</option><option value="available">Available</option><option value="unavailable">Unavailable</option><option value="online">Online</option><option value="suspended">Suspended</option></select>
+          <button class="btn btn-primary" id="uAdd">＋ Add user</button>
+        </div>
+        <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Image</th><th>Name</th><th>Age</th><th>Location</th><th>Status</th><th>Actions</th></tr></thead><tbody id="uBody"></tbody></table></div>
+      </section>
+
+      <!-- BOOKINGS -->
+      <section class="adm-sec" id="sec-bookings">
+        <div class="tabs" id="bTabs">
+          <button class="tab on" data-bs="pending">Pending Bookings</button>
+          <button class="tab" data-bs="confirmed">Confirmed Bookings</button>
+          <button class="tab" data-bs="completed">Completed Bookings</button>
+          <button class="tab" data-bs="cancelled">Cancelled / Declined</button>
+        </div>
+        <div class="tbl-wrap"><table class="tbl"><thead><tr><th>From</th><th>To</th><th>When</th><th>Type</th><th>Status</th><th>Actions</th></tr></thead><tbody id="bBody"></tbody></table></div>
+      </section>
+
+      <!-- REPORTS -->
+      <section class="adm-sec" id="sec-reports">
+        <h2 style="margin-bottom:10px">Member reports</h2>
+        <div class="tbl-wrap" style="margin-bottom:26px"><table class="tbl"><thead><tr><th>Reported</th><th>By</th><th>Reason</th><th>Status</th><th>Actions</th></tr></thead><tbody id="rBody"></tbody></table></div>
+        <h2 style="margin-bottom:10px">Contact messages</h2>
+        <div class="tbl-wrap"><table class="tbl"><thead><tr><th>From</th><th>Topic</th><th>Message</th><th>Received</th><th></th></tr></thead><tbody id="mBody"></tbody></table></div>
+      </section>
+
+      <!-- SETTINGS -->
+      <section class="adm-sec" id="sec-settings">
+        <div class="two-col">
+          <div class="glass box">
+            <h2>Appearance</h2>
+            <div class="set-row"><div><strong>Dark mode</strong><p>Switch the whole site to the dark theme.</p></div><label class="switch"><input type="checkbox" id="sDark"><i></i></label></div>
+            <h2 style="margin-top:22px">Website settings</h2>
+            <label style="margin-top:10px">Site name<input id="sName" maxlength="24"></label>
+            <label>Tagline<input id="sTag" maxlength="60"></label>
+            <div class="set-row"><div><strong>Maintenance banner</strong><p>Shows a notice to every visitor.</p></div><label class="switch"><input type="checkbox" id="sMaint"><i></i></label></div>
+            <button class="btn btn-primary" id="sSave" style="margin-top:14px">Save website settings</button>
+          </div>
+          <div class="glass box">
+            <h2>Notification settings</h2>
+            <div class="set-row"><div><strong>Email notifications</strong><p>Daily summary to administrators.</p></div><label class="switch"><input type="checkbox" id="nEmail"><i></i></label></div>
+            <div class="set-row"><div><strong>Push notifications</strong><p>Instant alerts in the browser.</p></div><label class="switch"><input type="checkbox" id="nPush"><i></i></label></div>
+            <div class="set-row"><div><strong>New booking alerts</strong><p>When a request is created.</p></div><label class="switch"><input type="checkbox" id="nBook"><i></i></label></div>
+            <div class="set-row"><div><strong>Report alerts</strong><p>When a member is reported.</p></div><label class="switch"><input type="checkbox" id="nRep"><i></i></label></div>
+            <h2 style="margin-top:22px">Data</h2>
+            <p class="muted" style="margin:6px 0 12px">Resets all demo members, bookings and reports (settings are kept).</p>
+            <button class="btn btn-danger" id="sReset">Reset demo data</button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- add / edit / view user modal -->
+  <div class="modal" id="uModal" role="dialog" aria-modal="true"><div class="modal-card wide">
+    <button class="modal-x" data-close aria-label="Close">×</button>
+    <h2 id="uModalTitle">User</h2>
+    <div id="uView" hidden></div>
+    <form id="uForm" novalidate hidden>
+      <div class="two"><label>Full name<input name="name" required></label><label>Username<input name="username" required></label></div>
+      <div class="two"><label>Email<input type="email" name="email" required></label><label>Password<input name="password" required></label></div>
+      <div class="two"><label>Age<input type="number" name="age" min="18" max="99" required></label>
+        <label>Gender<select name="gender"><option value="female">Woman</option><option value="male">Man</option><option value="other">Other</option></select></label></div>
+      <div class="two"><label>City<input name="city"></label>
+        <label>Status<select name="status"><option value="available">Available</option><option value="unavailable">Unavailable</option></select></label></div>
+      <label>Bio<textarea name="bio" rows="2" maxlength="240"></textarea></label>
+      <div class="two">
+        <label class="check"><input type="checkbox" name="verified"><span>Verified profile</span></label>
+        <label class="check"><input type="checkbox" name="suspended"><span>Suspended</span></label>
+      </div>
+      <p class="form-error" id="uError" role="alert"></p>
+      <button class="btn btn-primary btn-block" type="submit">Save user</button>
+    </form>
+  </div></div>
+
+  <script src="js/app.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

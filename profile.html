@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Profile – Spark</title>
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-page="profile">
+  <header id="site-header"></header>
+  <main>
+    <section class="gate container" data-gate hidden>
+      <div class="glass gate-card"><h2>Log in to see your profile</h2><p class="muted" style="margin:8px 0 16px">Manage your details, availability and privacy.</p>
+        <button class="btn btn-primary" data-open="login">Login</button><button class="btn btn-ghost" data-open="signup">Sign Up</button></div>
+    </section>
+
+    <div class="container" data-app style="padding-top:28px">
+      <section class="glass" style="overflow:hidden">
+        <div class="p-cover"></div>
+        <div class="p-head">
+          <div class="p-av"><img id="pAvatar" src="" alt="Your photo"><label>Change photo<input type="file" id="pPhoto" accept="image/*"></label></div>
+          <div class="p-info"><h1 id="pName"></h1><p class="muted" id="pMeta"></p><div class="chips" id="pBadges" style="margin:8px 0 0"></div></div>
+          <div class="status-switch" id="pStatus" style="min-width:260px;margin:0 0 6px">
+            <button data-status="available"><span class="dot available"></span>Available</button>
+            <button data-status="unavailable"><span class="dot unavailable"></span>Unavailable</button>
+          </div>
+        </div>
+      </section>
+
+      <div class="stats" id="pStats"></div>
+
+      <div class="two-col">
+        <form class="glass box" id="pForm" novalidate>
+          <h2>Edit profile</h2><p class="muted">Changes are saved to the app database instantly.</p>
+          <div class="label-like">Gender</div>
+          <div class="opt-row">
+            <label class="opt"><input type="radio" name="gender" value="female"><span><b>♀</b>Woman</span></label>
+            <label class="opt"><input type="radio" name="gender" value="male"><span><b>♂</b>Man</span></label>
+            <label class="opt"><input type="radio" name="gender" value="other"><span><b>⚧</b>Other</span></label>
+          </div>
+          <div class="two"><label>Full name<input name="name" required></label><label>Age<input type="number" name="age" min="18" max="99" required></label></div>
+          <div class="two"><label>City<input name="city" required></label><label>Username<input name="username" required></label></div>
+          <label>About you<textarea name="bio" rows="3" maxlength="240"></textarea></label>
+          <label>Interests <small>(comma separated)</small><input name="interests"></label>
+          <div class="label-like">I describe myself as</div>
+          <div class="chips" id="pSelf"></div>
+          <p class="form-error" id="pError" role="alert"></p>
+          <button class="btn btn-primary" type="submit">Save changes</button>
+        </form>
+
+        <div>
+          <section class="glass box">
+            <h2>Privacy &amp; location</h2>
+            <div class="set-row"><div><strong>Share my location</strong><p>Shown approximately, only while Available.</p></div><label class="switch"><input type="checkbox" id="tShare"><i></i></label></div>
+            <div class="set-row"><div><strong>My position</strong><p id="locText">Not set</p></div><button class="btn btn-sm btn-ghost" id="updateLoc" type="button">Update</button></div>
+            <div class="set-row"><div><strong>Dark mode</strong><p>Applies to this browser.</p></div><label class="switch"><input type="checkbox" id="tDark"><i></i></label></div>
+          </section>
+          <section class="glass box">
+            <h2>My sessions</h2>
+            <p class="muted" id="pReqSummary"></p>
+            <a class="btn btn-primary" href="booking.html">Open bookings</a>
+          </section>
+          <section class="glass box">
+            <h2>Account</h2>
+            <p class="muted" style="margin-bottom:12px">Deleting your account removes your profile and bookings.</p>
+            <button class="btn btn-ghost btn-sm" id="pLogout" type="button">Logout</button>
+            <button class="btn btn-danger btn-sm" id="deleteAcct" type="button">Delete my account</button>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer id="site-footer"></footer>
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+</html>

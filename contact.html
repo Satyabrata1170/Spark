@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact – Spark</title>
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-page="contact">
+  <header id="site-header"></header>
+  <main class="container">
+    <div class="page-head"><h1>Contact us</h1><p class="muted">Questions, feedback or need to report someone? We read every message.</p></div>
+    <div class="two-col">
+      <form class="glass box" id="contactForm" novalidate>
+        <h2>Send a message</h2><p class="muted">We usually reply within 24 hours.</p>
+        <div class="two">
+          <label>Your name<input name="name" required autocomplete="name"></label>
+          <label>Email<input type="email" name="email" required autocomplete="email"></label>
+        </div>
+        <label>Topic<select name="subject"><option>General question</option><option>Report a member</option><option>Account / login</option><option>Safety concern</option><option>Feedback</option></select></label>
+        <label>Message<textarea name="message" rows="6" required minlength="10"></textarea></label>
+        <button class="btn btn-primary" type="submit">Send message</button>
+      </form>
+      <aside class="glass box">
+        <h2>Other ways to reach us</h2><br>
+        <p>📧 <b>Email</b><br><span class="muted">support@spark.example</span></p><br>
+        <p>🕘 <b>Support hours</b><br><span class="muted">Mon–Sat, 9:00–18:00 IST</span></p><br>
+        <p>🚨 <b>In danger?</b><br><span class="muted">Contact your local emergency number first (India: 112).</span></p>
+      </aside>
+    </div>
+  </main>
+  <footer id="site-footer"></footer>
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
